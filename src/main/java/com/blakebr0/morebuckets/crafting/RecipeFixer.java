@@ -10,8 +10,6 @@ import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.MilkBucketItem;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.common.crafting.CompoundIngredient;
-import net.minecraftforge.common.crafting.DifferenceIngredient;
-import net.minecraftforge.common.crafting.IntersectionIngredient;
 import net.minecraftforge.common.crafting.MultiItemValue;
 import net.minecraftforge.common.crafting.PartialNBTIngredient;
 import net.minecraftforge.common.crafting.StrictNBTIngredient;
@@ -71,8 +69,6 @@ public class RecipeFixer implements ResourceManagerReloadListener {
 
     private static boolean isForgeIngredient(Class<?> clazz) {
         return clazz.equals(CompoundIngredient.class)
-                || clazz.equals(DifferenceIngredient.class)
-                || clazz.equals(IntersectionIngredient.class)
                 || clazz.equals(StrictNBTIngredient.class)
                 || clazz.equals(PartialNBTIngredient.class);
     }
