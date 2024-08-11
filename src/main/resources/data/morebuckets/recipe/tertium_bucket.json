@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
-  "conditions": [
+  "neoforge:conditions": [
     {
       "type": "morebuckets:bucket_enabled",
-      "bucket": "morebuckets:supremium"
+      "bucket": "morebuckets:tertium"
     }
   ],
   "pattern": [
@@ -12,10 +12,10 @@
   ],
   "key": {
     "M": {
-      "item": "mysticalagriculture:supremium_ingot"
+      "id": "mysticalagriculture:tertium_ingot"
     }
   },
   "result": {
-    "item": "morebuckets:supremium_bucket"
+    "id": "morebuckets:tertium_bucket"
   }
 }

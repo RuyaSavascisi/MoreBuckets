@@ -1,15 +1,15 @@
 {
   "type": "minecraft:crafting_shaped",
-  "conditions": [
+  "neoforge:conditions": [
     {
       "type": "morebuckets:bucket_enabled",
       "bucket": "morebuckets:silver"
     },
     {
-      "type": "forge:not",
+      "type": "neoforge:not",
       "value": {
-        "type": "forge:tag_empty",
-        "tag": "forge:ingots/silver"
+        "type": "neoforge:tag_empty",
+        "tag": "c:ingots/silver"
       }
     }
   ],
@@ -19,10 +19,10 @@
   ],
   "key": {
     "M": {
-      "tag": "forge:ingots/silver"
+      "tag": "c:ingots/silver"
     }
   },
   "result": {
-    "item": "morebuckets:silver_bucket"
+    "id": "morebuckets:silver_bucket"
   }
 }

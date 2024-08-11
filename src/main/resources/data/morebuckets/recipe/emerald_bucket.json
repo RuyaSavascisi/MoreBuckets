@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
-  "conditions": [
+  "neoforge:conditions": [
     {
       "type": "morebuckets:bucket_enabled",
-      "bucket": "morebuckets:prudentium"
+      "bucket": "morebuckets:emerald"
     }
   ],
   "pattern": [
@@ -12,10 +12,10 @@
   ],
   "key": {
     "M": {
-      "item": "mysticalagriculture:prudentium_ingot"
+      "tag": "c:gems/emerald"
     }
   },
   "result": {
-    "item": "morebuckets:prudentium_bucket"
+    "id": "morebuckets:emerald_bucket"
   }
 }

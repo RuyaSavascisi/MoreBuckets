@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
-  "conditions": [
+  "neoforge:conditions": [
     {
       "type": "morebuckets:bucket_enabled",
-      "bucket": "morebuckets:quartz"
+      "bucket": "morebuckets:imperium"
     }
   ],
   "pattern": [
@@ -12,10 +12,10 @@
   ],
   "key": {
     "M": {
-      "tag": "forge:gems/quartz"
+      "item": "mysticalagriculture:imperium_ingot"
     }
   },
   "result": {
-    "item": "morebuckets:quartz_bucket"
+    "id": "morebuckets:imperium_bucket"
   }
 }

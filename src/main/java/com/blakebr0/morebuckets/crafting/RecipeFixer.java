@@ -2,21 +2,19 @@ package com.blakebr0.morebuckets.crafting;
 
 import com.blakebr0.cucumber.helper.RecipeHelper;
 import com.blakebr0.morebuckets.config.ModConfigs;
-import com.blakebr0.morebuckets.crafting.ingredient.FluidIngredient;
+import com.blakebr0.morebuckets.crafting.ingredient.FluidBucketIngredient;
 import com.blakebr0.morebuckets.item.MoreBucketItem;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.MilkBucketItem;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraftforge.common.crafting.CompoundIngredient;
-import net.minecraftforge.common.crafting.MultiItemValue;
-import net.minecraftforge.common.crafting.PartialNBTIngredient;
-import net.minecraftforge.common.crafting.StrictNBTIngredient;
-import net.minecraftforge.event.AddReloadListenerEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.neoforged.bus.api.EventPriority;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.common.crafting.ICustomIngredient;
+import net.neoforged.neoforge.event.AddReloadListenerEvent;
+import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 
 import java.util.ArrayList;
 
@@ -39,21 +37,32 @@ public class RecipeFixer implements ResourceManagerReloadListener {
         var recipes = RecipeHelper.getRecipeManager().getRecipes();
 
         for (var recipe : recipes) {
-            var ingredients = recipe.getIngredients();
+            var ingredients = recipe.value().getIngredients();
 
             for (int i = 0; i < ingredients.size(); i++) {
                 var ingredient = ingredients.get(i);
-                if (!ingredient.getClass().equals(Ingredient.class) && !isForgeIngredient(ingredient.getClass()))
-                    continue;
 
-                for (var value : ingredient.values) {
-                    // we want to avoid initializing tag ingredients
-                    if (value instanceof Ingredient.ItemValue || value instanceof MultiItemValue) {
-                        for (var stack : value.getItems()) {
-                            var item = stack.getItem();
-                            if (item instanceof BucketItem || item instanceof MilkBucketItem || item instanceof IFluidHandler) {
-                                ingredients.set(i, new FluidIngredient(ingredient));
-                                break;
+                if (ingredient.isCustom()) {
+                    assert ingredient.getCustomIngredient() != null;
+
+                    var hasFluidIngredient = ingredient.getCustomIngredient().getItems().anyMatch(stack -> {
+                        var tank = stack.getCapability(Capabilities.FluidHandler.ITEM);
+                        return tank != null && !tank.getFluidInTank(0).isEmpty();
+                    });
+
+                    if (hasFluidIngredient) {
+                        ingredients.set(i, FluidBucketIngredient.of(ingredient));
+                    }
+                } else {
+                    for (var value : ingredient.getValues()) {
+                        // we want to avoid initializing tag ingredients
+                        if (value instanceof Ingredient.ItemValue) {
+                            for (var stack : value.getItems()) {
+                                var item = stack.getItem();
+                                if (item instanceof BucketItem || item instanceof MilkBucketItem || item instanceof IFluidHandler) {
+                                    ingredients.set(i, FluidBucketIngredient.of(ingredient));
+                                    break;
+                                }
                             }
                         }
                     }
@@ -65,11 +74,5 @@ public class RecipeFixer implements ResourceManagerReloadListener {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public void onAddReloadListeners(AddReloadListenerEvent event) {
         event.addListener(this);
-    }
-
-    private static boolean isForgeIngredient(Class<?> clazz) {
-        return clazz.equals(CompoundIngredient.class)
-                || clazz.equals(StrictNBTIngredient.class)
-                || clazz.equals(PartialNBTIngredient.class);
     }
 }

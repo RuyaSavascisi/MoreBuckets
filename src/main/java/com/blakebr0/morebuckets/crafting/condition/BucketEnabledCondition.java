@@ -1,24 +1,22 @@
 package com.blakebr0.morebuckets.crafting.condition;
 
-import com.blakebr0.morebuckets.MoreBuckets;
 import com.blakebr0.morebuckets.lib.ModBuckets;
-import com.google.gson.JsonObject;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.GsonHelper;
-import net.minecraftforge.common.crafting.conditions.ICondition;
-import net.minecraftforge.common.crafting.conditions.IConditionSerializer;
+import net.neoforged.neoforge.common.conditions.ICondition;
 
 public class BucketEnabledCondition implements ICondition {
-    private static final ResourceLocation ID = new ResourceLocation(MoreBuckets.MOD_ID, "bucket_enabled");
+    public static final MapCodec<BucketEnabledCondition> CODEC = RecordCodecBuilder.mapCodec(builder ->
+            builder.group(
+                    ResourceLocation.CODEC.fieldOf("bucket").forGetter(condition -> condition.bucket)
+            ).apply(builder, BucketEnabledCondition::new)
+    );
+
     private final ResourceLocation bucket;
 
     public BucketEnabledCondition(ResourceLocation bucket) {
         this.bucket = bucket;
-    }
-
-    @Override
-    public ResourceLocation getID() {
-        return ID;
     }
 
     @Override
@@ -27,23 +25,8 @@ public class BucketEnabledCondition implements ICondition {
         return bucket != null && bucket.isEnabled();
     }
 
-    public static class Serializer implements IConditionSerializer<BucketEnabledCondition> {
-        public static final Serializer INSTANCE = new Serializer();
-
-        @Override
-        public void write(JsonObject json, BucketEnabledCondition value) {
-            json.addProperty("bucket", value.bucket.toString());
-        }
-
-        @Override
-        public BucketEnabledCondition read(JsonObject json) {
-            var crop = GsonHelper.getAsString(json, "bucket");
-            return new BucketEnabledCondition(new ResourceLocation(crop));
-        }
-
-        @Override
-        public ResourceLocation getID() {
-            return BucketEnabledCondition.ID;
-        }
+    @Override
+    public MapCodec<? extends ICondition> codec() {
+        return CODEC;
     }
 }

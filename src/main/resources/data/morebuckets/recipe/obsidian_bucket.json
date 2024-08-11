@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
-  "conditions": [
+  "neoforge:conditions": [
     {
       "type": "morebuckets:bucket_enabled",
-      "bucket": "morebuckets:inferium"
+      "bucket": "morebuckets:obsidian"
     }
   ],
   "pattern": [
@@ -12,10 +12,10 @@
   ],
   "key": {
     "M": {
-      "item": "mysticalagriculture:inferium_ingot"
+      "tag": "c:obsidians"
     }
   },
   "result": {
-    "item": "morebuckets:inferium_bucket"
+    "id": "morebuckets:obsidian_bucket"
   }
 }

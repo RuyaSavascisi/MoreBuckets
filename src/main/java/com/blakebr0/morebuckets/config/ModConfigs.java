@@ -1,17 +1,17 @@
 package com.blakebr0.morebuckets.config;
 
 import com.blakebr0.morebuckets.lib.ModBuckets;
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.fml.ModList;
+import net.neoforged.fml.ModList;
+import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class ModConfigs {
-    public static final ForgeConfigSpec COMMON;
+    public static final ModConfigSpec COMMON;
 
-    public static final ForgeConfigSpec.BooleanValue ENABLE_RECIPE_FIXER;
+    public static final ModConfigSpec.BooleanValue ENABLE_RECIPE_FIXER;
 
     // Common
     static {
-        final var common = new ForgeConfigSpec.Builder();
+        final var common = new ModConfigSpec.Builder();
 
         common.comment("General settings.").push("General");
         ENABLE_RECIPE_FIXER = common

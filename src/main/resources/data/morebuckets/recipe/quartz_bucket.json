@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
-  "conditions": [
+  "neoforge:conditions": [
     {
       "type": "morebuckets:bucket_enabled",
-      "bucket": "morebuckets:tertium"
+      "bucket": "morebuckets:quartz"
     }
   ],
   "pattern": [
@@ -12,10 +12,10 @@
   ],
   "key": {
     "M": {
-      "item": "mysticalagriculture:tertium_ingot"
+      "tag": "c:gems/quartz"
     }
   },
   "result": {
-    "item": "morebuckets:tertium_bucket"
+    "id": "morebuckets:quartz_bucket"
   }
 }

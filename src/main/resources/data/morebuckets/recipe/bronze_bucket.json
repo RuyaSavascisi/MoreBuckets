@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "neoforge:conditions": [
+    {
+      "type": "morebuckets:bucket_enabled",
+      "bucket": "morebuckets:bronze"
+    },
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:ingots/bronze"
+      }
+    }
+  ],
+  "pattern": [
+    "M M",
+    " M "
+  ],
+  "key": {
+    "M": {
+      "tag": "c:ingots/bronze"
+    }
+  },
+  "result": {
+    "id": "morebuckets:bronze_bucket"
+  }
+}

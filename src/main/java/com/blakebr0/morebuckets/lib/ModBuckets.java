@@ -33,25 +33,25 @@ public final class ModBuckets {
     public static final Bucket INSANIUM = new Bucket("Insanium", 64, ModConfigs::isMysticalAgradditionsInstalled);
 
     static {
-        ALL.put(new ResourceLocation(MoreBuckets.MOD_ID, "copper"), COPPER);
-        ALL.put(new ResourceLocation(MoreBuckets.MOD_ID, "quartz"), QUARTZ);
-        ALL.put(new ResourceLocation(MoreBuckets.MOD_ID, "obsidian"), OBSIDIAN);
-        ALL.put(new ResourceLocation(MoreBuckets.MOD_ID, "gold"), GOLD);
-        ALL.put(new ResourceLocation(MoreBuckets.MOD_ID, "emerald"), EMERALD);
-        ALL.put(new ResourceLocation(MoreBuckets.MOD_ID, "diamond"), DIAMOND);
+        ALL.put(MoreBuckets.resource("copper"), COPPER);
+        ALL.put(MoreBuckets.resource("quartz"), QUARTZ);
+        ALL.put(MoreBuckets.resource("obsidian"), OBSIDIAN);
+        ALL.put(MoreBuckets.resource("gold"), GOLD);
+        ALL.put(MoreBuckets.resource("emerald"), EMERALD);
+        ALL.put(MoreBuckets.resource("diamond"), DIAMOND);
 
-        ALL.put(new ResourceLocation(MoreBuckets.MOD_ID, "aluminum"), ALUMINUM);
-        ALL.put(new ResourceLocation(MoreBuckets.MOD_ID, "tin"), TIN);
-        ALL.put(new ResourceLocation(MoreBuckets.MOD_ID, "rubber"), RUBBER);
-        ALL.put(new ResourceLocation(MoreBuckets.MOD_ID, "silver"), SILVER);
-        ALL.put(new ResourceLocation(MoreBuckets.MOD_ID, "bronze"), BRONZE);
-        ALL.put(new ResourceLocation(MoreBuckets.MOD_ID, "steel"), STEEL);
+        ALL.put(MoreBuckets.resource("aluminum"), ALUMINUM);
+        ALL.put(MoreBuckets.resource("tin"), TIN);
+        ALL.put(MoreBuckets.resource("rubber"), RUBBER);
+        ALL.put(MoreBuckets.resource("silver"), SILVER);
+        ALL.put(MoreBuckets.resource("bronze"), BRONZE);
+        ALL.put(MoreBuckets.resource("steel"), STEEL);
 
-        ALL.put(new ResourceLocation(MoreBuckets.MOD_ID, "inferium"), INFERIUM);
-        ALL.put(new ResourceLocation(MoreBuckets.MOD_ID, "prudentium"), PRUDENTIUM);
-        ALL.put(new ResourceLocation(MoreBuckets.MOD_ID, "tertium"), TERTIUM);
-        ALL.put(new ResourceLocation(MoreBuckets.MOD_ID, "imperium"), IMPERIUM);
-        ALL.put(new ResourceLocation(MoreBuckets.MOD_ID, "supremium"), SUPREMIUM);
-        ALL.put(new ResourceLocation(MoreBuckets.MOD_ID, "insanium"), INSANIUM);
+        ALL.put(MoreBuckets.resource("inferium"), INFERIUM);
+        ALL.put(MoreBuckets.resource("prudentium"), PRUDENTIUM);
+        ALL.put(MoreBuckets.resource("tertium"), TERTIUM);
+        ALL.put(MoreBuckets.resource("imperium"), IMPERIUM);
+        ALL.put(MoreBuckets.resource("supremium"), SUPREMIUM);
+        ALL.put(MoreBuckets.resource("insanium"), INSANIUM);
     }
 }

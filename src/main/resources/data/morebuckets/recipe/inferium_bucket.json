@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
-  "conditions": [
+  "neoforge:conditions": [
     {
       "type": "morebuckets:bucket_enabled",
-      "bucket": "morebuckets:diamond"
+      "bucket": "morebuckets:inferium"
     }
   ],
   "pattern": [
@@ -12,10 +12,10 @@
   ],
   "key": {
     "M": {
-      "tag": "forge:gems/diamond"
+      "item": "mysticalagriculture:inferium_ingot"
     }
   },
   "result": {
-    "item": "morebuckets:diamond_bucket"
+    "id": "morebuckets:inferium_bucket"
   }
 }

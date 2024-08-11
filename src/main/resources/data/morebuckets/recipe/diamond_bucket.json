@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
-  "conditions": [
+  "neoforge:conditions": [
     {
       "type": "morebuckets:bucket_enabled",
-      "bucket": "morebuckets:imperium"
+      "bucket": "morebuckets:diamond"
     }
   ],
   "pattern": [
@@ -12,10 +12,10 @@
   ],
   "key": {
     "M": {
-      "item": "mysticalagriculture:imperium_ingot"
+      "tag": "c:gems/diamond"
     }
   },
   "result": {
-    "item": "morebuckets:imperium_bucket"
+    "id": "morebuckets:diamond_bucket"
   }
 }

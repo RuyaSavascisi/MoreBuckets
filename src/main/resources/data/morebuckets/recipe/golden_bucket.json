@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
-  "conditions": [
+  "neoforge:conditions": [
     {
       "type": "morebuckets:bucket_enabled",
-      "bucket": "morebuckets:obsidian"
+      "bucket": "morebuckets:gold"
     }
   ],
   "pattern": [
@@ -12,10 +12,10 @@
   ],
   "key": {
     "M": {
-      "tag": "forge:obsidian"
+      "tag": "c:ingots/gold"
     }
   },
   "result": {
-    "item": "morebuckets:obsidian_bucket"
+    "id": "morebuckets:golden_bucket"
   }
 }

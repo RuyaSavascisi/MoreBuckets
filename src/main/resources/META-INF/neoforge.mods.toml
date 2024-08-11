@@ -1,11 +1,11 @@
 modLoader="javafml"
-loaderVersion="[47,)"
+loaderVersion="[4,)"
 license="MIT"
 
 [[mods]]
     issueTrackerURL="https://github.com/BlakeBr0/MoreBuckets/issues"
     modId="morebuckets"
-    version="${file.jarVersion}"
+    version="${mod_version}"
     displayName="More Buckets"
     displayURL="https://blakesmods.com/more-buckets"
     # logoFile="examplemod.png"
@@ -16,15 +16,15 @@ license="MIT"
     '''
 
     [[dependencies.morebuckets]]
-        modId="forge"
+        modId="neoforge"
         mandatory=true
-        versionRange="[47.1.0,)"
+        versionRange="[21.0.0-beta,)"
         ordering="NONE"
         side="BOTH"
     [[dependencies.morebuckets]]
         modId="minecraft"
         mandatory=true
-        versionRange="[1.19,3]"
+        versionRange="[1.21,1.21.1)"
         ordering="NONE"
         side="BOTH"
     [[dependencies.morebuckets]]

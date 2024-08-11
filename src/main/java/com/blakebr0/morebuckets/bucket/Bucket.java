@@ -1,7 +1,7 @@
 package com.blakebr0.morebuckets.bucket;
 
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.fluids.FluidType;
+import net.neoforged.neoforge.common.ModConfigSpec;
+import net.neoforged.neoforge.fluids.FluidType;
 
 import java.util.function.Supplier;
 
@@ -9,8 +9,8 @@ public class Bucket {
     private final String name;
     private final int buckets;
     private final Supplier<Boolean> hasRequirements;
-    private ForgeConfigSpec.BooleanValue enabledValue;
-    private ForgeConfigSpec.IntValue bucketsValue;
+    private ModConfigSpec.BooleanValue enabledValue;
+    private ModConfigSpec.IntValue bucketsValue;
 
     public Bucket(String name, int buckets) {
         this(name, buckets, () -> true);
@@ -34,7 +34,7 @@ public class Bucket {
         return this.hasRequirements.get() && this.enabledValue.get();
     }
 
-    public void initConfigValues(ForgeConfigSpec.Builder config) {
+    public void initConfigValues(ModConfigSpec.Builder config) {
         config.push(this.name);
 
         this.enabledValue = config.define("enabled", true);

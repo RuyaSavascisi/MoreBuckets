@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
-  "conditions": [
+  "neoforge:conditions": [
     {
       "type": "morebuckets:bucket_enabled",
-      "bucket": "morebuckets:insanium"
+      "bucket": "morebuckets:supremium"
     }
   ],
   "pattern": [
@@ -12,10 +12,10 @@
   ],
   "key": {
     "M": {
-      "item": "mysticalagradditions:insanium_ingot"
+      "item": "mysticalagriculture:supremium_ingot"
     }
   },
   "result": {
-    "item": "morebuckets:insanium_bucket"
+    "id": "morebuckets:supremium_bucket"
   }
 }

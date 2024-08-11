@@ -1,9 +1,9 @@
 {
-  "parent": "forge:item/default",
-  "loader": "forge:fluid_container",
+  "parent": "neoforge:item/default",
+  "loader": "neoforge:fluid_container",
   "fluid": "empty",
   "textures": {
     "base": "morebuckets:item/steel_bucket",
-    "fluid": "forge:item/mask/bucket_fluid"
+    "fluid": "neoforge:item/mask/bucket_fluid"
   }
 }

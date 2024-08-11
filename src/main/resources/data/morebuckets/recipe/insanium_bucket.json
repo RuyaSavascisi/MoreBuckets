@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
-  "conditions": [
+  "neoforge:conditions": [
     {
       "type": "morebuckets:bucket_enabled",
-      "bucket": "morebuckets:gold"
+      "bucket": "morebuckets:insanium"
     }
   ],
   "pattern": [
@@ -12,10 +12,10 @@
   ],
   "key": {
     "M": {
-      "tag": "forge:ingots/gold"
+      "item": "mysticalagradditions:insanium_ingot"
     }
   },
   "result": {
-    "item": "morebuckets:golden_bucket"
+    "id": "morebuckets:insanium_bucket"
   }
 }
