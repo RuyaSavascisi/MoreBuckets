@@ -12,7 +12,6 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.neoforge.common.crafting.ICustomIngredient;
 import net.neoforged.neoforge.event.AddReloadListenerEvent;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 
@@ -34,7 +33,7 @@ public class RecipeFixer implements ResourceManagerReloadListener {
             }
         }
 
-        var recipes = RecipeHelper.getRecipeManager().getRecipes();
+        var recipes = RecipeHelper.getAllRecipes();
 
         for (var recipe : recipes) {
             var ingredients = recipe.value().getIngredients();
