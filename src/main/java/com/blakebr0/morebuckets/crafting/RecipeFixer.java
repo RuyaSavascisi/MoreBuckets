@@ -1,6 +1,7 @@
 package com.blakebr0.morebuckets.crafting;
 
 import com.blakebr0.cucumber.helper.RecipeHelper;
+import com.blakebr0.morebuckets.MoreBuckets;
 import com.blakebr0.morebuckets.config.ModConfigs;
 import com.blakebr0.morebuckets.crafting.ingredient.FluidBucketIngredient;
 import com.blakebr0.morebuckets.item.MoreBucketItem;
@@ -11,7 +12,6 @@ import net.minecraft.world.item.MilkBucketItem;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.event.AddReloadListenerEvent;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 
@@ -41,27 +41,22 @@ public class RecipeFixer implements ResourceManagerReloadListener {
             for (int i = 0; i < ingredients.size(); i++) {
                 var ingredient = ingredients.get(i);
 
-                if (ingredient.isCustom()) {
-                    assert ingredient.getCustomIngredient() != null;
+                if (ingredient.isCustom())
+                    continue;
 
-                    var hasFluidIngredient = ingredient.getCustomIngredient().getItems().anyMatch(stack -> {
-                        var tank = stack.getCapability(Capabilities.FluidHandler.ITEM);
-                        return tank != null && !tank.getFluidInTank(0).isEmpty();
-                    });
-
-                    if (hasFluidIngredient) {
-                        ingredients.set(i, FluidBucketIngredient.of(ingredient));
-                    }
-                } else {
-                    for (var value : ingredient.getValues()) {
-                        // we want to avoid initializing tag ingredients
-                        if (value instanceof Ingredient.ItemValue) {
-                            for (var stack : value.getItems()) {
-                                var item = stack.getItem();
-                                if (item instanceof BucketItem || item instanceof MilkBucketItem || item instanceof IFluidHandler) {
+                for (var value : ingredient.getValues()) {
+                    // we want to avoid initializing tag ingredients
+                    if (value instanceof Ingredient.ItemValue) {
+                        for (var stack : value.getItems()) {
+                            var item = stack.getItem();
+                            if (item instanceof BucketItem || item instanceof MilkBucketItem || item instanceof IFluidHandler) {
+                                try {
                                     ingredients.set(i, FluidBucketIngredient.of(ingredient));
-                                    break;
+                                } catch (Exception e) {
+                                    MoreBuckets.LOGGER.warn("Failed to modify ingredients for recipe {}, skipping", recipe.id());
                                 }
+
+                                break;
                             }
                         }
                     }
